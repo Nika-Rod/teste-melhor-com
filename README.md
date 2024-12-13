@@ -1,6 +1,7 @@
 # Desafio Frontend - MelhorCom
 
-Este projeto foi desenvolvido como parte de um desafio para a vaga de **desenvolvedor frontend** na empresa **MelhorCom**.
+Este projeto foi desenvolvido como parte de um desafio para a vaga de **desenvolvedor frontend** na empresa **MelhorCom**.  
+**Projeto Disponível**: [teste-melhor-com.vercel.app](https://teste-melhor-com.vercel.app/) (Frontend hospedado na Vercel)
 
 ## Tecnologias Utilizadas
 
@@ -49,7 +50,7 @@ A solução consiste em uma aplicação **frontend** desenvolvida com **ReactJS*
     npm start
     ```
 
-4. Para a API, consulte o repositório [api-melhorCom](https://github.com/Nika-Rod/api-melhorCom) e siga as instruções de como rodá-la.
+4. Para rodar a API, consulte o repositório [api-melhorCom](https://github.com/Nika-Rod/api-melhorCom) e siga as instruções de como executá-la.
 
 ## Licença
 
