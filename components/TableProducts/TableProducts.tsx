@@ -40,7 +40,7 @@ export default function TableProducts() {
   const fetchCelulares = React.useCallback(async () => {
     const endpoint = type === 'active' ? 'phone' : 'deletedPhones';
     try {
-      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/${endpoint}`);
+      const response = await axios.get(`https://api-melhorcom.onrender.com/api/${endpoint}`);
       setCelulares(response.data);
     } catch (error) {
       console.error(`Erro ao buscar celulares ${type}:`, error);
@@ -69,7 +69,7 @@ export default function TableProducts() {
 
   const handleDelete = async (phoneCode: string) => {
     try {
-      const response = await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/api/phone/${phoneCode}`);
+      const response = await axios.delete(`https://api-melhorcom.onrender.com/api/phone/${phoneCode}`);
       if (response.status === 200) {
         setCelulares((prevPhones) => prevPhones.filter((phone) => phone.code !== phoneCode));
         setOpenDialog(false);

@@ -55,7 +55,7 @@ export default function RegisterProducts() {
 
     const fetchCelularData = async (code: string) => {
         try {
-            const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/phone/code/${code}`);
+            const response = await axios.get(`https://api-melhorcom.onrender.com/api/phone/code/${code}`);
             setCelularData(response.data);
         } catch (error) {
             console.error('Erro ao buscar celular:', error);
@@ -83,11 +83,11 @@ export default function RegisterProducts() {
             };
 
             if (isEditing) {
-                await axios.patch(`${process.env.NEXT_PUBLIC_API_URL}/api/phone/code/${celularData.code}`, celularDataFormatado);
+                await axios.patch(`https://api-melhorcom.onrender.com/api/phone/code/${celularData.code}`, celularDataFormatado);
                 alert('Celular atualizado com sucesso');
             } else {
                 const generatedCode = uuidv4().replace(/[^0-9]/g, '').slice(0, 8);
-                await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/phone`, {
+                await axios.post(`https://api-melhorcom.onrender.com/api/phone`, {
                     ...celularDataFormatado,
                     code: generatedCode,
                 });
