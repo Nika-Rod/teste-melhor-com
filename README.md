@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Desafio Frontend - MelhorCom
 
-## Getting Started
+Este projeto foi desenvolvido como parte de um desafio para a vaga de **desenvolvedor frontend** na empresa **MelhorCom**.
 
-First, run the development server:
+## Tecnologias Utilizadas
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **React**: Biblioteca principal para construção da interface do usuário.
+- **TypeScript**: Tipagem estática para o código JavaScript.
+- **MUI (Material-UI)**: Biblioteca de componentes para React, utilizada para criação de componentes responsivos e otimizados.
+- **Node.js**: Backend desenvolvido para criar uma API, hospedada na plataforma **Render**.
+- **Postgres**: Banco de dados utilizado, acessado através da plataforma **Supabase**.
+- **Axios**: Biblioteca para realizar requisições HTTP.
+- **Next.js**: Framework para otimizações e funcionalidades adicionais.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## API
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+A API que deveria ser consumida inicialmente estava fora do ar. Por isso, criei uma API utilizando **Node.js** e a hospedei na plataforma **Render**. O código da API está disponível no meu repositório GitHub:  
+[api-melhorCom](https://github.com/Nika-Rod/api-melhorCom)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Proposta
 
-## Learn More
+A proposta do desafio consistia em construir um website para gerenciar o cadastro de novos celulares. A empresa está lançando um novo app para venda de celulares e precisa de uma plataforma para gerenciar o cadastro desses dispositivos.
 
-To learn more about Next.js, take a look at the following resources:
+## Requisitos
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- O app deve ser desenvolvido utilizando **ReactJS**.
+- Qualquer biblioteca adicional pode ser utilizada.
+- O link do repositório GitHub com a solução deverá ser entregue.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Solução
 
-## Deploy on Vercel
+A solução consiste em uma aplicação **frontend** desenvolvida com **ReactJS**, utilizando **TypeScript** e a biblioteca **MUI** para a construção de uma interface responsiva e otimizada. Além disso, uma **API em Node.js** foi criada e integrada para gerenciamento dos dados de celulares, com o banco de dados **Postgres** hospedado no **Supabase**.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Como Rodar o Projeto
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Clone o repositório:
+    ```bash
+    git clone https://github.com/Nika-Rod/melhorCom-challenge.git
+    ```
+
+2. Instale as dependências do frontend:
+    ```bash
+    cd melhorCom-challenge
+    npm install
+    ```
+
+3. Inicie o servidor de desenvolvimento:
+    ```bash
+    npm start
+    ```
+
+4. Para a API, consulte o repositório [api-melhorCom](https://github.com/Nika-Rod/api-melhorCom) e siga as instruções de como rodá-la.
+
+## Licença
+
+Este projeto está licenciado sob a [MIT License](LICENSE).
