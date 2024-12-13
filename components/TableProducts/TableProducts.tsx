@@ -7,7 +7,6 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import { Typography, Button, Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
@@ -36,9 +35,9 @@ export default function TableProducts() {
   const [openDialog, setOpenDialog] = React.useState(false);
   const [selectedPhone, setSelectedPhone] = React.useState<Celular | null>(null);
   const router = useRouter();
-  const { id, setId } = useIdContext();
+  const { setId } = useIdContext();
 
-  const fetchCelulares = async () => {
+  const fetchCelulares = React.useCallback(async () => {
     const endpoint = type === 'active' ? 'phone' : 'deletedPhones';
     try {
       const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/${endpoint}`);
@@ -48,7 +47,7 @@ export default function TableProducts() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [type]);
 
   React.useEffect(() => {
     fetchCelulares();

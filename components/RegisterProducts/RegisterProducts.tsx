@@ -5,7 +5,7 @@ import { TextField, Button } from '@mui/material';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { Typography } from '@mui/material';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -13,7 +13,7 @@ import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
-import dayjs from 'dayjs';
+import dayjs, { Dayjs } from 'dayjs';
 import { useIdContext } from '../../context/IdContext';
 
 interface Celular {
@@ -43,7 +43,7 @@ export default function RegisterProducts() {
     const [isLoading, setIsLoading] = React.useState(false);
 
     const handleNavigateBack = () => {
-        resetId(); 
+        resetId();
         router.push('/');
     };
 
@@ -69,21 +69,20 @@ export default function RegisterProducts() {
                 alert('A data de início é obrigatória!');
                 return;
             }
-    
+
             if (!celularData.startDate || !celularData.endDate) {
                 alert('As datas de início e fim são obrigatórias!');
                 return;
             }
-    
+
             const celularDataFormatado = {
                 ...celularData,
                 price: Number(celularData.price),
                 startDate: celularData.startDate.split('/').reverse().join('-'),
                 endDate: celularData.endDate ? celularData.endDate.split('/').reverse().join('-') : null,
             };
-    
+
             if (isEditing) {
-                const { code, ...dataToUpdate } = celularDataFormatado;
                 await axios.patch(`${process.env.NEXT_PUBLIC_API_URL}/api/phone/code/${celularData.code}`, celularDataFormatado);
                 alert('Celular atualizado com sucesso');
             } else {
@@ -94,7 +93,7 @@ export default function RegisterProducts() {
                 });
                 alert('Novo celular cadastrado com sucesso');
             }
-    
+
             router.push('/');
         } catch (error) {
             console.error('Erro ao salvar celular:', error);
@@ -120,8 +119,13 @@ export default function RegisterProducts() {
         }));
     };
 
-    const handleDateChange = (newDate: any, field: string) => {
+    const handleDateChange = (newDate: Dayjs | null, field: string) => {
+        if (newDate === null) {
+            return; // Retorna sem fazer nada se a data for nula
+        }
+
         const formattedDate = newDate.format('DD/MM/YYYY');
+
         if (field === 'startDate') {
             const startDate = dayjs(formattedDate, 'DD/MM/YYYY');
             const minStartDate = dayjs('25/12/2018', 'DD/MM/YYYY');
@@ -254,6 +258,7 @@ export default function RegisterProducts() {
                                 border: '1px solid',
                                 '&:hover': { backgroundColor: '#f5f5f5', cursor: 'pointer' },
                             }}
+                            disabled={isLoading} 
                         >
                             {isEditing ? 'Atualizar' : 'Salvar'}
                         </Button>
